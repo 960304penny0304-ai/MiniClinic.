@@ -1,1 +1,15 @@
+public class App2 {
+    public static void main(String[] args) {
+        String name = null;
 
+        // 使用 && 短路：name 為 null 時，右側不執行，避免 NullPointerException
+        if (name != null && name.length() > 0) {
+            System.out.println("名字：" + name);
+        }
+
+        // 使用 & 會強制兩側都執行，name 為 null 時會發生錯誤
+        if (name != null & name.length() > 0) {
+            System.out.println("名字：" + name);
+        }
+    }
+}
