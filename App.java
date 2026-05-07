@@ -1,27 +1,42 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class App {
-    public static void main(String[] args) throws FileNotFoundException {
-        int lineCount = 0, wordCount = 0, charCount = 0;
-        Scanner scanner = new Scanner(new File("Learning_Java.txt"));
+    public static void main(String[] args) {
+        Student s1 = new Student();
+        s1.setName("陳小明");
+        s1.setAge(20);
+        s1.setMajor("醫資學程");
+        s1.print();
 
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            lineCount++;
-            charCount += line.length();
+        System.out.println();
 
-            if (!line.trim().isEmpty()) {
-                String[] words = line.trim().split("\\s+");
-                wordCount += words.length;
-            }
-        }
+        Student s2 = new Student()
+                .setName("林雅婷")
+                .setAge(21)
+                .setMajor("智慧資安");
+        s2.print();
+    }
+}
 
-        scanner.close();
+class Student {
+    private String name;
+    private int age;
+    private String major;
 
-        System.out.println("行數：" + lineCount);
-        System.out.println("字數：" + wordCount);
-        System.out.println("字元數：" + charCount);
+    public Student setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Student setAge(int age) {
+        this.age = age;
+        return this;
+    }
+
+    public Student setMajor(String major) {
+        this.major = major;
+        return this;
+    }
+
+    public void print() {
+        System.out.println("姓名：" + name + "，年齡：" + age + "，科系：" + major);
     }
 }
